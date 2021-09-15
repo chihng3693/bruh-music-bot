@@ -78,8 +78,8 @@ module.exports = {
 
         else if(cmd === 'skip') skip_song(message, server_queue);
         else if(cmd === 'stop') stop_song(message, server_queue);
-        else if(cmd === 'pause') skip_song(message, server_queue);
-        else if(cmd === 'resume') stop_song(message, server_queue);
+        else if(cmd === 'pause') pause_song(message, server_queue);
+        else if(cmd === 'resume') resume_song(message, server_queue);
     }
     
 }
