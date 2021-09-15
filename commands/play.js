@@ -16,8 +16,7 @@ module.exports = {
         const voice_channel = message.member.voice.channel;
         if (!voice_channel) return message.channel.send('You need to be in a channel to execute this command!');
         const permissions = voice_channel.permissionsFor(message.client.user);
-        if (!permissions.has('CONNECT')) return message.channel.send('You dont have the correct permissins');
-        if (!permissions.has('SPEAK')) return message.channel.send('You dont have the correct permissins');
+        if (!permissions.has('CONNECT')) return message.channel.send('You dont have the correct permissions');
 
         //This is our server queue. We are getting this server queue from the global queue.
         const server_queue = queue.get(message.guild.id);
@@ -118,12 +117,12 @@ const stop_song = (message, server_queue) => {
 
 const pause_song = (message, server_queue) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
-    server_queue.connection.dispatcher.pause();
+    server_queue.connection.play().dispatcher.pause();
     return;
 }
 
 const resume_song = (message, server_queue) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
-    server_queue.connection.dispatcher.resume();
+    server_queue.connection.play().dispatcher.resume();
     return;
 }
