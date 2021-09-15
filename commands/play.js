@@ -60,7 +60,7 @@ module.exports = {
                 queue.set(message.guild.id, queue_constructor);
                 queue_constructor.songs.push(song);
     
-                //Establish a connection and play the song with the vide_player function.
+                //Establish a connection and play the song with the video_player function.
                 try {
                     const connection = await voice_channel.join();
                     queue_constructor.connection = connection;
@@ -118,10 +118,12 @@ const stop_song = (message, server_queue) => {
 
 const pause_song = (message, server_queue) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
+    server_queue.playing = false;
     server_queue.connection.dispatcher.pause();
 }
 
 const resume_song = (message, server_queue) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
+    server_queue.playing = true;
     server_queue.connection.dispatcher.resume();
 }
