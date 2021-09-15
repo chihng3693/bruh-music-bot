@@ -27,7 +27,7 @@ client.on('message', message => {
     const args = message.content.slice(PREFIX.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'play' || command === 'skip' || command === 'stop'){
+    if(command === 'play' || command === 'skip' || command === 'stop' || command === 'pause' || command === 'resume'){
         client.commands.get('play').execute(message, args, command, client, Discord);
     }else if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
