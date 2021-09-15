@@ -119,7 +119,7 @@ const stop_song = (message, server_queue) => {
 const pause_song = (message, server_queue) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
     server_queue.playing = false;
-    server_queue.connection.dispatcher.pause();
+    server_queue.connection.dispatcher.pause(true);
 }
 
 const resume_song = (message, server_queue) => {
