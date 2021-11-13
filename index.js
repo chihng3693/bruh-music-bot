@@ -25,6 +25,7 @@ client.on('message', message => {
     if(!message.content.startsWith(PREFIX) || message.author.bot) return;
 
     const args = message.content.slice(PREFIX.length).split(/ +/);
+    console.log(args)
     const command = args.shift().toLowerCase();
 
     if(command === 'play' || command === 'skip' || command === 'stop' || command === 'loop'){
