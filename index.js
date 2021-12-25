@@ -4,7 +4,7 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD
 
 const token = 'ODg3MjA4MzcxNzU1ODMxMzI2.YUAzLw.ps5CyCYawkTz6oijR8JAWY7bU5Y';
 
-const PREFIX = '-';
+const PREFIX = '!';
 
 const fs = require('fs');
 
@@ -27,9 +27,11 @@ client.on('message', message => {
     const args = message.content.slice(PREFIX.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'play' || command === 'skip' || command === 'stop' || command === 'loop'){
+    if(command === 'play' || command === 'loop'){
         client.commands.get('play').execute(message, args, command, client, Discord);
-    }else if(command === 'ping'){
+    }
+
+    if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     }
 })
