@@ -79,6 +79,7 @@ module.exports = {
         else if(cmd === 'stop') stop_song(message, server_queue);
         else if(cmd === 'pause') pause_song(message, server_queue);
         else if(cmd === 'resume') resume_song(message, server_queue);
+        else if(cmd === 'reset') reset_bot(message, server_queue);
     }
     
 }
@@ -124,5 +125,15 @@ const pause_song = (message, server_queue) => {
 const resume_song = (message, server_queue) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
     server_queue.connection.play().dispatcher.resume();
+    return;
+}
+
+const reset_bot = (message, server_queue) => {
+    if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
+    server_queue.songs = [];
+    server_queue.connection.dispatcher.end();
+    server_queue.voice_channel.leave();
+    queue.delete(guild.id);
+
     return;
 }
