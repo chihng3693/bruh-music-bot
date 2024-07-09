@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_VOICE_STATES"] });
 
-const token = 'ODg3MjA4MzcxNzU1ODMxMzI2.YUAzLw.ps5CyCYawkTz6oijR8JAWY7bU5Y';
+const token = '';
 
 const PREFIX = '-';
 
